@@ -1,8 +1,8 @@
 @keyframes wiggle {
-  0% { transform: translateY(0px); }
- 25% { transform: translateY(-2px); }
- 65% { transform: translateY(2px); }
- 100% { transform: translateY(0px); }
+  0% { transform: translateX(0px); }
+ 25% { transform: translateX(-2px); }
+ 65% { transform: translateX(2px); }
+ 100% { transform: translateX(0px); }
 }
 
 html, body {
@@ -25,14 +25,15 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 1.5em;
   font-family: 'Inconsolata', sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
   color: rgba(0, 0, 0, 0.8);
 }
 
 p {
   margin-top: 1em;
-  margin-bottom: 1.65em;
+  margin-bottom: 1.6em;
   color: rgba(0, 0, 0, 0.8);
 }
 
