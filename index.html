@@ -5,14 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Knowbase</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro" rel="stylesheet">
 </head>
+
 <body>
-  <textarea id="input-text"></textarea>
-  <button id="submit-btn">start slides</button>
-  <img id="main-pic" src="https://steamusercontent-a.akamaihd.net/ugc/255965188116948531/1055F0B8522D9DDEDC67058CDA090B109D4C4137/" />
-  <p id="main-text">Hallo du nidel</p> 
+  <div id="prep">
+    <h1>knowbase</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ullamcorper id nibh eget pulvinar. Nam posuere nulla in malesuada fermentum. Proin malesuada odio non facilisis efficitur.</p>
+    <textarea id="input-text">
+[{
+  "text": "Hello slide one",
+  "img": "http://cool-1.gif"
+}, {
+  "text": "Hello slide two",
+  "img": "http://cool-2.gif" 
+}, {
+  "text": "Hello slide three",
+  "img": "http://cool-3.gif" 
+}]</textarea>
+    <button id="submit-btn">start slides</button>
+  </div>
+  <div id="pres">
+    <img id="main-pic" src="" />
+    <p id="main-text"></p> 
+  </div>
   <script src="knowbase.js"></script>
 </body>
 </html>

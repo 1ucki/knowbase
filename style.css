@@ -1,7 +1,7 @@
 @keyframes colorchange {
-  0% { color: pink }
-  50% { color: blue }
-  100% { color: pink }
+  0% { color: powderblue }
+  50% { color: peachpuff }
+  100% { color: powderblue }
 }
 
 html, body {
@@ -16,19 +16,79 @@ body {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  font-family: 'Paytone One', sans-serif;
-  font-size: 30px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 16px;
+  background: pink;
 }
 
-img {
-  max-width: 100%;
-  border-radius: 50%;
-  box-shadow: 0px 10px 30px rgba(255, 190, 200, 1)
+h1 {
+  margin: 0;
+  font-size: 1.5em;
+  font-family: 'Inconsolata', sans-serif;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 p {
+  margin-top: 1em;
+  margin-bottom: 1.65em;
+}
+
+#prep {
+  max-width: 300px;
+}
+
+
+#input-text {
+  display: block;
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+  padding: 1em;
+  font-family: 'Inconsolata', monospace;
+  font-size: 1em;
+  color: rgba(145, 149, 155, 1);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  resize: none;
+}
+
+#submit-btn {
+  display: block;
+  box-sizing: border-box;
+  width: 300px;
+  height: 50px;
+  margin-top: 0.5em;
+  font-family: 'Inconsolata', monospace;
+  font-size: 1em;
+  color: rgba(145, 149, 155, 1);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  transition: all 400ms;
+}
+
+#submit-btn:hover {
+  color: pink;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+#pres {
+  display: none;
+}
+
+#pres p {
   margin: 0.5em;
   font-size: 2em;
   animation: colorchange 0.2s;
   animation-iteration-count: infinite;
+}
+
+#pres img {
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0px 10px 30px rgba(255, 190, 200, 1)
 }
