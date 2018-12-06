@@ -10,6 +10,10 @@ const sessionId = document.querySelector('#session-id')
   
 const socket = new WebSocket('wss://cnrd.computer/knowbase-ws')
 
+socket.onopen = event => {
+  checkParams()
+}
+
 socket.addEventListener('message', event => {
   const msg = JSON.parse(event.data)
 
@@ -176,5 +180,3 @@ function next () {
   state.current_slide++
   changeSlide()
 }
-
-checkParams()
