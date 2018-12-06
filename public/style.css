@@ -42,6 +42,15 @@ p {
   color: rgba(0, 0, 0, 0.8);
 }
 
+.emoji {
+  font-size: 1.5em;
+}
+
+.small {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.3);
+}
+
 .invalid {
   animation: wiggle 200ms infinite;
 }
