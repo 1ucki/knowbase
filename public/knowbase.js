@@ -61,7 +61,7 @@ joinButton.addEventListener('click', () => {
 sessionId.addEventListener('click', () => {
   const url = new URL(window.location)
   const text = `${ url.origin }/?id=${ state.id }`
-
+  console.log(url)
   navigator.clipboard.writeText(text)
 })
 
