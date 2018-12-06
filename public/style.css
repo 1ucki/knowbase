@@ -136,4 +136,5 @@ button:active {
   right: 2em;
   font-size: 1em !important;
   color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }

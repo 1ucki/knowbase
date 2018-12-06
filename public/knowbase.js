@@ -58,6 +58,13 @@ joinButton.addEventListener('click', () => {
   }, 400)
 })
 
+sessionId.addEventListener('click', () => {
+  const url = new URL(window.location)
+  const text = `${ url.origin }/?id=${ state.id }`
+  console.log(url)
+  navigator.clipboard.writeText(text)
+})
+
 document.onkeydown = (event) => {
   if (state.mode === 'pres') {
     if (event.keyCode === 37) {
