@@ -3,13 +3,14 @@ const express = require('express')
 const WebSocket = require('ws')
 
 const app = express()
+const port = 4000
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/controller', express.static(path.join(__dirname, 'controller')))
 
-app.listen(80)
+app.listen(port)
 
-const wss = new WebSocket.Server({ port: 3001 })
+const wss = new WebSocket.Server({ port: 4001 })
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
@@ -20,3 +21,5 @@ wss.on('connection', function connection(ws) {
     })
   })
 })
+
+console.log(`knowbase presenting at http://localhost:${ port }`)

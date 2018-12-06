@@ -8,23 +8,29 @@ const joinButton = document.querySelector('#join-btn')
 const sessionInput = document.querySelector('#input-session')
 const sessionId = document.querySelector('#session-id')
   
-const socket = new WebSocket('ws://192.168.0.234:3001')
+const socket = new WebSocket('ws://cnrd.computer/knowbase-ws')
 
 socket.addEventListener('message', event => {
-  if (event.data === 'previous') previous()
-  if (event.data === 'next') next()
+  const msg = JSON.parse(event.data)
+
+  if (msg.id === state.id) {
+    if (msg.do === 'previous') previous()
+    if (msg.do === 'next') next()
+    if (msg.do === 'request_slides') sendSlides()
+    if (msg.do === 'set_slides') setSlides(msg.state)
+  }
 })
 
-let slides = []
 let state = {
+  slides: [],
   current_slide: 0,
   mode: 'prep',
-  id: 11111
+  id: false
 }
 
 submitButton.addEventListener('click', () => {
   try {
-    slides = JSON.parse(slidesInput.value)
+    state.slides = JSON.parse(slidesInput.value)
     present()
   } catch (err) {
     slidesInput.className = 'invalid'
@@ -36,27 +42,31 @@ submitButton.addEventListener('click', () => {
 })
 
 joinButton.addEventListener('click', () => {
-  try {
-    slides = JSON.parse(slidesInput.value)
-    present()
-  } catch (err) {
-    slidesInput.className = 'invalid'
+  state.id = sessionInput.value
+  sessionId.innerText = state.id
 
-    setTimeout(() => {
-      slidesInput.className = ''
-    }, 400)
-  }
+  requestSlides()
 })
 
 document.onkeydown = (event) => {
   if (state.mode === 'pres') {
     if (event.keyCode === 37) {
-      socket.send('previous')
+      const msg = {
+        id: state.id,
+        do: 'previous'
+      }
+
+      socket.send(JSON.stringify(msg))
       previous()
     }
 
     if (event.keyCode === 39) {
-      socket.send('next')
+      const msg = {
+        id: state.id,
+        do: 'next'
+      }
+
+      socket.send(JSON.stringify(msg))
       next()
     }
 
@@ -64,6 +74,33 @@ document.onkeydown = (event) => {
       prepare()
     }
   }
+}
+
+function setSlides (sessionState) {
+  state.slides = sessionState.slides
+  state.current_slide = sessionState.current_slide
+
+  present()
+  changeSlide()
+}
+
+function sendSlides () {
+  const msg = { 
+    id: state.id,
+    do: 'set_slides',
+    state: state
+  }
+
+  socket.send(JSON.stringify(msg))
+}
+
+function requestSlides () {
+  const msg = { 
+    id: state.id,
+    do: 'request_slides'
+  }
+
+  socket.send(JSON.stringify(msg))
 }
 
 function generateSessionId () {
@@ -74,6 +111,7 @@ function generateSessionId () {
 function prepare () {
   state.mode = 'prep'
   state.current_slide = 0
+  state.id = false
   
   prepDiv.style.display = 'block'
   presDiv.style.display = 'none'
@@ -81,7 +119,7 @@ function prepare () {
 
 function present () {
   state.mode = 'pres'
-  generateSessionId()
+  if (!state.id) generateSessionId()
 
   prepDiv.style.display = 'none'
   presDiv.style.display = 'flex'
@@ -90,16 +128,16 @@ function present () {
 }
 
 function changeSlide () {
-  if (slides[state.current_slide].text) {
+  if (state.slides[state.current_slide].text) {
     mainText.style.display = 'block'
     mainImg.style.display = 'none'
 
-    mainText.innerText = slides[state.current_slide].text
-  } else if (slides[state.current_slide].img) {
+    mainText.innerText = state.slides[state.current_slide].text
+  } else if (state.slides[state.current_slide].img) {
     mainImg.style.display = 'block'
     mainText.style.display = 'none'
 
-    mainImg.src = slides[state.current_slide].img
+    mainImg.src = state.slides[state.current_slide].img
   } else {
     console.log('no valid slide')
   }
@@ -115,7 +153,7 @@ function previous () {
 }
 
 function next () {
-  if (state.current_slide === slides.length - 1) return
+  if (state.current_slide === state.slides.length - 1) return
 
   state.current_slide++
   changeSlide()
