@@ -50,8 +50,19 @@ function present () {
 }
 
 function changeSlide () {
-  mainText.innerText = slides[state.current_slide].text
-  mainImg.src = slides[state.current_slide].img
+  if (slides[state.current_slide].text) {
+    mainText.style.display = 'block'
+    mainImg.style.display = 'none'
+
+    mainText.innerText = slides[state.current_slide].text
+  } else if (slides[state.current_slide].img) {
+    mainImg.style.display = 'block'
+    mainText.style.display = 'none'
+
+    mainImg.src = slides[state.current_slide].img
+  } else {
+    console.log('no valid slide')
+  }
 
   console.log(state.current_slide)
 }
