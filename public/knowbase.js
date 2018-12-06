@@ -142,7 +142,8 @@ function prepare () {
   state.current_slide = 0
   state.id = false
 
-  window.history.pushState('knowbase', 'knowbase', '/')
+  const url = new URL(window.location)
+  window.history.pushState('knowbase', 'knowbase', url.pathname)
   
   prepDiv.style.display = 'block'
   presDiv.style.display = 'none'
