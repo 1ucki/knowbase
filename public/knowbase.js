@@ -82,6 +82,18 @@ document.onkeydown = (event) => {
   }
 }
 
+function checkParams () {
+  const url = new URL(window.location)
+  const id = url.searchParams.get('id')
+  
+  if (id) {
+    state.id = id
+    sessionId.innerText = state.id
+
+    requestState()
+  }
+}
+
 function setState (sessionState) {
   state = sessionState
   console.log(state)
@@ -164,3 +176,5 @@ function next () {
   state.current_slide++
   changeSlide()
 }
+
+checkParams()
