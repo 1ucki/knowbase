@@ -6,7 +6,7 @@ const app = express()
 const port = 4000
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/controller', express.static(path.join(__dirname, 'controller')))
+app.use('//controller', express.static(path.join(__dirname, 'controller')))
 
 app.listen(port)
 
