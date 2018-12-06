@@ -141,6 +141,8 @@ function prepare () {
   state.mode = 'prep'
   state.current_slide = 0
   state.id = false
+
+  window.history.pushState('knowbase', 'knowbase', '/')
   
   prepDiv.style.display = 'block'
   presDiv.style.display = 'none'
