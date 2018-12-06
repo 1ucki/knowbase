@@ -16,8 +16,8 @@ socket.addEventListener('message', event => {
   if (msg.id === state.id) {
     if (msg.do === 'previous') previous()
     if (msg.do === 'next') next()
-    if (msg.do === 'request_slides') sendSlides()
-    if (msg.do === 'set_slides') setSlides(msg.state)
+    if (msg.do === 'send_state') sendState()
+    if (msg.do === 'set_state') setState(msg.state)
   }
 })
 
@@ -45,7 +45,7 @@ joinButton.addEventListener('click', () => {
   state.id = sessionInput.value
   sessionId.innerText = state.id
 
-  requestSlides()
+  requestState()
 
   sessionInput.className = 'invalid'
 
@@ -82,34 +82,34 @@ document.onkeydown = (event) => {
   }
 }
 
-function setSlides (sessionState) {
-  state.slides = sessionState.slides
-  state.current_slide = sessionState.current_slide
+function setState (sessionState) {
+  state = sessionState
+  console.log(state)
 
   present()
   changeSlide()
 }
 
-function sendSlides () {
+function sendState () {
   const msg = { 
     id: state.id,
-    do: 'set_slides',
+    do: 'set_state',
     state: state
   }
 
   socket.send(JSON.stringify(msg))
 }
 
-function requestSlides () {
+function requestState () {
   const msg = { 
     id: state.id,
-    do: 'request_slides'
+    do: 'send_state'
   }
 
   socket.send(JSON.stringify(msg))
 }
 
-function generateSessionId () {
+function generateId () {
   state.id = `${ Math.random().toString(24).replace(/[^a-z]+/g, '').substr(0, 5).toUpperCase() }-${ Math.floor(Math.random() * (999 - 111) + 111) }`
   sessionId.innerText = state.id
 }
@@ -125,7 +125,7 @@ function prepare () {
 
 function present () {
   state.mode = 'pres'
-  if (!state.id) generateSessionId()
+  if (!state.id) generateId()
 
   prepDiv.style.display = 'none'
   presDiv.style.display = 'flex'
