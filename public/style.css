@@ -50,12 +50,11 @@ p {
   max-width: 300px;
 }
 
-
-#input-text {
+textarea {
   display: block;
   box-sizing: border-box;
   width: 300px;
-  height: 300px;
+  height: 200px;
   padding: 1em;
   font-family: 'Inconsolata', monospace;
   font-size: 1em;
@@ -65,14 +64,15 @@ p {
   border: 0;
   outline: 0;
   resize: none;
+  word-break: break-all;
   transition: all 400ms;
 }
 
-#input-text:focus {
+textarea:focus {
   background: rgba(0, 0, 0, 0.1);
 }
 
-#submit-btn {
+button {
   display: block;
   box-sizing: border-box;
   width: 300px;
@@ -88,13 +88,18 @@ p {
   transition: all 400ms;
 }
 
-#submit-btn:hover {
+button:hover {
   background: rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-#submit-btn:active {
+button:active {
   transform: scale(0.95)
+}
+
+#input-session {
+  margin-top: 2em;
+  height: 50px;
 }
 
 #pres {
@@ -114,4 +119,12 @@ p {
   max-width: 20vw;
   border-radius: 5px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#session-id {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  font-size: 1em !important;
+  color: rgba(0, 0, 0, 0.3);
 }

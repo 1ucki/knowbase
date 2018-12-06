@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: row nowrap;
+}
+
+#previous {
+  width: 50vw;
+  height: 100vh;
+  background: white;
+}
+
+#next {
+  width: 50vw;
+  height: 100vh;
+  background: black;
+}
