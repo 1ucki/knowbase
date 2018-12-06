@@ -8,7 +8,7 @@ const joinButton = document.querySelector('#join-btn')
 const sessionInput = document.querySelector('#input-session')
 const sessionId = document.querySelector('#session-id')
   
-const socket = new WebSocket('ws://cnrd.computer/knowbase-ws')
+const socket = new WebSocket('wss://cnrd.computer/knowbase-ws')
 
 socket.addEventListener('message', event => {
   const msg = JSON.parse(event.data)
