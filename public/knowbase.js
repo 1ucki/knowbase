@@ -46,6 +46,12 @@ joinButton.addEventListener('click', () => {
   sessionId.innerText = state.id
 
   requestSlides()
+
+  sessionInput.className = 'invalid'
+
+  setTimeout(() => {
+    sessionInput.className = ''
+  }, 400)
 })
 
 document.onkeydown = (event) => {
