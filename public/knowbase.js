@@ -101,6 +101,9 @@ function checkParams () {
     state.id = id
     sessionId.innerText = state.id
 
+    const url = new URL(window.location)
+    window.history.pushState('knowbase', 'knowbase', url.pathname)
+
     requestState()
   }
 }
@@ -141,9 +144,6 @@ function prepare () {
   state.mode = 'prep'
   state.current_slide = 0
   state.id = false
-
-  const url = new URL(window.location)
-  window.history.pushState('knowbase', 'knowbase', url.pathname)
   
   prepDiv.style.display = 'block'
   presDiv.style.display = 'none'
