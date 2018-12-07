@@ -93,35 +93,6 @@ document.onkeydown = (event) => {
   }
 }
 
-const mc = new Hammer(document.body)
-mc.on('panleft panright pinch', event => {
-	if (state.mode === 'pres') {
-    if (event.type === 'panright') {
-      const msg = {
-        id: state.id,
-        do: 'previous'
-      }
-
-      socket.send(JSON.stringify(msg))
-      previous()
-    }
-
-    if (event.type === 'panleft') {
-      const msg = {
-        id: state.id,
-        do: 'next'
-      }
-
-      socket.send(JSON.stringify(msg))
-      next()
-    }
-
-    if (event.type === 'pinch') {
-      prepare()
-    }
-  }
-})
-
 function checkParams () {
   const url = new URL(window.location)
   const id = url.searchParams.get('id')
