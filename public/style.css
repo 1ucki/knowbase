@@ -141,6 +141,6 @@ button:active {
 @media screen and (max-width: 375px) {
   body {
     justify-content: flex-start;
-    margin: 5vw 0;
+    margin: 7vw 0;
   }
 }
