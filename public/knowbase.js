@@ -166,8 +166,8 @@ function setReaction (emoji) {
   }
 
   if (emoji === 'angry') {
-    const clone = reactionStar.cloneNode(true)
-    const parent = reactionStar.parentNode
+    const clone = reactionAngry.cloneNode(true)
+    const parent = reactionAngry.parentNode
     parent.appendChild(clone)
     clone.className = 'reaction'
 
