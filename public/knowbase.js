@@ -115,11 +115,13 @@ function checkParams () {
 }
 
 function setReaction (emoji) {
+  console.log(emoji)
   if (emoji === 'poop') {
-    reactionPoop.className = 'reaction'
+    const clone = reactionPoop.cloneNode()
+    clone.className = 'reaction'
 
     setTimeout(() => {
-      reactionPoop.className = ''
+      clone.className = ''
     }, 1000)
   }
 }
