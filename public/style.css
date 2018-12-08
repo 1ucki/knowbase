@@ -65,6 +65,10 @@ p {
   animation: wiggle 200ms infinite;
 }
 
+.reaction-container {
+  position: relative;
+}
+
 .reaction {
   position: absolute;
   animation: reaction 1000ms infinite;
