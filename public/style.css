@@ -12,7 +12,7 @@
 }
 
 ::selection { 
-  background: pink;
+  background: purple;
   color: white;
 }
 
@@ -76,10 +76,10 @@ textarea {
   padding: 1em;
   font-family: 'Inconsolata', monospace;
   font-size: 1em;
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.3);
   background: rgba(0, 0, 0, 0);
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   outline: 0;
   resize: none;
   word-break: break-all;
@@ -101,13 +101,13 @@ button {
   color: rgba(0, 0, 0, 0.8);
   background: rgba(0, 0, 0, 0);
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   outline: 0;
   transition: all 400ms;
 }
 
 button:hover {
-  background: rgba(0, 0, 0, 0.025);
+  background: rgba(0, 0, 0, 0.03);
   cursor: pointer;
 }
 
