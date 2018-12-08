@@ -12,8 +12,8 @@
 }
 
 @keyframes reaction {
-  0% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 1; }
- 100% { transform: translateY(-150px) rotate(250deg) scale(1.5); opacity: 0; }
+  0% { transform: translateY(-32px) rotate(0deg) scale(1); opacity: 1; }
+ 100% { transform: translateY(-150px) rotate(230deg) scale(1.5); opacity: 0; }
 }
 
 ::selection {
@@ -66,6 +66,7 @@ p {
 }
 
 .reaction {
+  position: absolute;
   animation: reaction 1000ms infinite;
 }
 
