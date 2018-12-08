@@ -9,6 +9,9 @@ const sessionInput = document.querySelector('#input-session')
 const sessionId = document.querySelector('#session-id')
 const reactions = document.querySelector('#reactions')
 const reactionPoop = document.querySelector('#reaction-poop')
+const reactionStar = document.querySelector('#reaction-star')
+const reactionMh = document.querySelector('#reaction-mh')
+const reactionAngry = document.querySelector('#reaction-angry')
   
 const socket = new WebSocket('wss://cnrd.computer/knowbase-ws')
 
@@ -65,6 +68,18 @@ reactionPoop.addEventListener('click', () => {
   sendReaction('poop')
 })
 
+reactionStar.addEventListener('click', () => {
+  sendReaction('star')
+})
+
+reactionMh.addEventListener('click', () => {
+  sendReaction('mh')
+})
+
+reactionAngry.addEventListener('click', () => {
+  sendReaction('angry')
+})
+
 sessionId.addEventListener('click', () => {
   const url = new URL(window.location)
   const text = `${ url.origin }${ url.pathname }?id=${ state.id }`
@@ -117,8 +132,39 @@ function checkParams () {
 
 function setReaction (emoji) {
   console.log(emoji)
+
   if (emoji === 'poop') {
     const clone = reactionPoop.cloneNode(true)
+    reactions.appendChild(clone)
+    clone.className = 'reaction'
+
+    setTimeout(() => {
+      clone.remove()
+    }, 1000)
+  }
+
+  if (emoji === 'star') {
+    const clone = reactionStar.cloneNode(true)
+    reactions.appendChild(clone)
+    clone.className = 'reaction'
+
+    setTimeout(() => {
+      clone.remove()
+    }, 1000)
+  }
+
+  if (emoji === 'mh') {
+    const clone = reactionMh.cloneNode(true)
+    reactions.appendChild(clone)
+    clone.className = 'reaction'
+
+    setTimeout(() => {
+      clone.remove()
+    }, 1000)
+  }
+
+  if (emoji === 'angry') {
+    const clone = reactionStar.cloneNode(true)
     reactions.appendChild(clone)
     clone.className = 'reaction'
 

@@ -153,6 +153,7 @@ button:active {
   position: fixed;
   bottom: 2em;
   left: 2em;
+  user-select: none;
 }
 
 #reactions p {
