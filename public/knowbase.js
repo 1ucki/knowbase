@@ -7,7 +7,6 @@ const slidesInput = document.querySelector('#input-text')
 const joinButton = document.querySelector('#join-btn')
 const sessionInput = document.querySelector('#input-session')
 const sessionId = document.querySelector('#session-id')
-const reactions = document.querySelector('#reactions')
 const reactionPoop = document.querySelector('#reaction-poop')
 const reactionStar = document.querySelector('#reaction-star')
 const reactionMh = document.querySelector('#reaction-mh')
@@ -135,7 +134,8 @@ function setReaction (emoji) {
 
   if (emoji === 'poop') {
     const clone = reactionPoop.cloneNode(true)
-    reactions.appendChild(clone)
+    const parent = reactionPoop.parentNode
+    parent.appendChild(clone)
     clone.className = 'reaction'
 
     setTimeout(() => {
@@ -145,7 +145,8 @@ function setReaction (emoji) {
 
   if (emoji === 'star') {
     const clone = reactionStar.cloneNode(true)
-    reactions.appendChild(clone)
+    const parent = reactionStar.parentNode
+    parent.appendChild(clone)
     clone.className = 'reaction'
 
     setTimeout(() => {
@@ -155,7 +156,8 @@ function setReaction (emoji) {
 
   if (emoji === 'mh') {
     const clone = reactionMh.cloneNode(true)
-    reactions.appendChild(clone)
+    const parent = reactionMh.parentNode
+    parent.appendChild(clone)
     clone.className = 'reaction'
 
     setTimeout(() => {
@@ -165,7 +167,8 @@ function setReaction (emoji) {
 
   if (emoji === 'angry') {
     const clone = reactionStar.cloneNode(true)
-    reactions.appendChild(clone)
+    const parent = reactionStar.parentNode
+    parent.appendChild(clone)
     clone.className = 'reaction'
 
     setTimeout(() => {
