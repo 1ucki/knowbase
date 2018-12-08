@@ -7,6 +7,7 @@ const slidesInput = document.querySelector('#input-text')
 const joinButton = document.querySelector('#join-btn')
 const sessionInput = document.querySelector('#input-session')
 const sessionId = document.querySelector('#session-id')
+const reactionPoop = document.querySelector('#reaction-poop')
   
 const socket = new WebSocket('wss://cnrd.computer/knowbase-ws')
 
@@ -22,6 +23,7 @@ socket.addEventListener('message', event => {
     if (msg.do === 'next') next()
     if (msg.do === 'send_state') sendState()
     if (msg.do === 'set_state') setState(msg.state)
+    if (msg.do === 'reaction') setReaction(msg.emoji)
   }
 })
 
@@ -56,6 +58,10 @@ joinButton.addEventListener('click', () => {
   setTimeout(() => {
     sessionInput.className = ''
   }, 400)
+})
+
+reactionPoop.addEventListener('click', () => {
+  sendReaction('poop')
 })
 
 sessionId.addEventListener('click', () => {
@@ -106,6 +112,26 @@ function checkParams () {
 
     requestState()
   }
+}
+
+function setReaction (emoji) {
+  if (emoji === 'poop') {
+    reactionPoop.className = 'reaction'
+
+    setTimeout(() => {
+      reactionPoop.className = ''
+    }, 1000)
+  }
+}
+
+function sendReaction (emoji) {
+  const msg = { 
+    id: state.id,
+    do: 'reaction',
+    emoji: emoji
+  }
+
+  socket.send(JSON.stringify(msg))
 }
 
 function setState (sessionState) {
