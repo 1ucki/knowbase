@@ -130,8 +130,6 @@ function checkParams () {
 }
 
 function setReaction (emoji) {
-  console.log(emoji)
-
   if (emoji === 'poop') {
     const clone = reactionPoop.cloneNode(true)
     const parent = reactionPoop.parentNode
