@@ -123,7 +123,7 @@ function setReaction (emoji) {
     clone.className = 'reaction'
 
     setTimeout(() => {
-      clone.className = ''
+      clone.remove()
     }, 1000)
   }
 }

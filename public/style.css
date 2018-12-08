@@ -68,7 +68,6 @@ p {
 
 .reaction {
   animation: reaction 1000ms infinite;
-  transform: translateX(-20px);
 }
 
 #main-text, #main-pic {
