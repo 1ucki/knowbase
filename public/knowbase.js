@@ -7,6 +7,7 @@ const slidesInput = document.querySelector('#input-text')
 const joinButton = document.querySelector('#join-btn')
 const sessionInput = document.querySelector('#input-session')
 const sessionId = document.querySelector('#session-id')
+const reactions = document.querySelector('#reactions')
 const reactionPoop = document.querySelector('#reaction-poop')
   
 const socket = new WebSocket('wss://cnrd.computer/knowbase-ws')
@@ -115,11 +116,14 @@ function checkParams () {
 }
 
 function setReaction (emoji) {
+  console.log(emoji)
   if (emoji === 'poop') {
-    reactionPoop.className = 'reaction'
+    const clone = reactionPoop.cloneNode(true)
+    reactions.appendChild(clone)
+    clone.className = 'reaction'
 
     setTimeout(() => {
-      reactionPoop.className = ''
+      clone.remove()
     }, 1000)
   }
 }
