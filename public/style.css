@@ -12,7 +12,7 @@
 }
 
 @keyframes reaction {
-  0% { transform: translateY(-2em) rotate(0deg) scale(1); filter: blur(0px); opacity: 1; }
+  0% { transform: translateY(-32px) rotate(0deg) scale(1); filter: blur(0px); opacity: 1; }
   100% { transform: translateY(-300px) rotate(230deg) scale(1.5); filter: blur(3px); opacity: 0; }
 }
 
