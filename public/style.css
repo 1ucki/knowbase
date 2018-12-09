@@ -69,6 +69,10 @@ p {
   position: relative;
 }
 
+.reaction-container p:active {
+  transform: scale(0.95)
+}
+
 .reaction {
   position: absolute;
   animation: reaction 1000ms infinite;
