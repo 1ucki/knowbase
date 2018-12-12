@@ -116,16 +116,6 @@ const app = new Vue({
     setViewer: function (viewer) {
       this.state.viewer = viewer
     },
-    requestViewer: function () {
-      this.state.viewer++
-      
-      const msg = { 
-        id: this.state.id,
-        do: 'send_viewer'
-      }
-    
-      socket.send(JSON.stringify(msg))
-    },
     setReaction: function (emoji) {
       if (emoji === 'poop') {
         const clone = this.$refs.poop.cloneNode(true)
@@ -192,7 +182,6 @@ const app = new Vue({
         state: this.state
       }
 
-      this.requestViewer()
       socket.send(JSON.stringify(msg))
     },
     requestState: function () {

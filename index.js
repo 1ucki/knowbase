@@ -8,35 +8,15 @@ const port = 4000
 app.use(express.static(path.join(__dirname, 'public')))
 app.listen(port)
 
-const wss = new WebSocket.Server({
-  port: 4001,
-  clientTracking: true
-})
+const wss = new WebSocket.Server({ port: 4001 })
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
-    const msgIn = JSON.parse(message)
-
-    if (msgIn.do === 'send_viewer') {
-      console.log(wss.clients.size)
-      wss.clients.forEach(function each(client) {
-        if (client !== ws && client.readyState === WebSocket.OPEN) {
-          const msg = {
-            id: msgIn.id,
-            do: 'set_viewer',
-            viewer: wss.clients.size
-          }
-
-          client.send(JSON.stringify(msg))
-        }
-      })
-    } else {
-      wss.clients.forEach(function each(client) {
-        if (client !== ws && client.readyState === WebSocket.OPEN) {
-          client.send(message)
-        }
-      })
-    }
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message)
+      }
+    })
   })
 })
 
