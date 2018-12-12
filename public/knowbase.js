@@ -8,6 +8,8 @@ const app = new Vue({
       version: '0.1'
     },
     state: {
+      id: false,
+      mode: 'prep',
       slides: [],
       currentSlide: {
         pos: 0,
@@ -16,8 +18,7 @@ const app = new Vue({
           img: null
         }
       },
-      mode: 'prep',
-      id: false
+      viewer: 0
     },
     input: {
       slides: '[{ "txt": "Hello slide one" }, { "img": "https://myhero.com/images/guest/g285052/hero107070/Young-Bill-Gates.jpg" }, { "txt": "Hello slide three" }]',
@@ -167,8 +168,8 @@ const app = new Vue({
     },
     setState: function (sessionState) {
       this.state = sessionState
-    
       this.present()
+      console.log(this.state)
     },
     sendState: function () {
       const msg = { 
@@ -176,7 +177,8 @@ const app = new Vue({
         do: 'set_state',
         state: this.state
       }
-    
+      
+      this.state.viewer++
       socket.send(JSON.stringify(msg))
     },
     requestState: function () {
