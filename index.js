@@ -6,8 +6,6 @@ const app = express()
 const port = 4000
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/controller', express.static(path.join(__dirname, 'controller')))
-
 app.listen(port)
 
 const wss = new WebSocket.Server({ port: 4001 })

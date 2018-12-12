@@ -52,6 +52,14 @@ p {
   color: rgba(0, 0, 0, 0.8);
 }
 
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .emoji {
   font-size: 1.5em;
 }
@@ -139,10 +147,14 @@ button:active {
 }
 
 #pres {
-  display: none;
+  display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+}
+
+#pres.show {
+  display: flex;
 }
 
 #main-text {
