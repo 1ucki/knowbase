@@ -18,7 +18,7 @@ wss.on('connection', function connection(ws) {
     const msg = JSON.parse(message)
 
     if (msg.do === 'send_viewer') {
-      console.log(typeof wss.clients)
+      console.log(Object.keys(wss.clients).length)
       /* wss.clients.forEach(function each(client) {
         if (client !== ws && client.readyState === WebSocket.OPEN) {
           const returnMsg = {
