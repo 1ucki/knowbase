@@ -117,6 +117,8 @@ const app = new Vue({
       this.state.viewer = viewer
     },
     requestViewer: function () {
+      this.state.viewer++
+      
       const msg = { 
         id: this.state.id,
         do: 'send_viewer'
@@ -189,7 +191,7 @@ const app = new Vue({
         do: 'set_state',
         state: this.state
       }
-      
+
       this.requestViewer()
       socket.send(JSON.stringify(msg))
     },

@@ -40,6 +40,7 @@
         </section>
       </section>
       <p id="session-id" v-on:click="copyIdToClipboard">{{ state.id }}</p>
+      <p v-for="n in state.viewer">{{ n }}</p>
     </section>
   </section>
   <script src="knowbase.js"></script>
