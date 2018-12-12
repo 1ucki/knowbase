@@ -24,7 +24,7 @@
     </section>
     <section id="pres" v-if="isPresenting">
       <img id="main-pic" v-if="state.currentSlide.data.img" v-bind:src="state.currentSlide.data.img" />
-      <p id="main-text" v-if="state.currentSlide.data.txt" >{{ state.currentSlide.data.txt }}</p>
+      <p id="main-text" v-if="state.currentSlide.data.txt">{{ state.currentSlide.data.txt }}</p>
       <section id="reactions">
         <section class="reaction-container">
           <p ref="poop" v-on:click="sendReaction('poop')">💩</p>
