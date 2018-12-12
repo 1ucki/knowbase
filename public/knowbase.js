@@ -41,6 +41,7 @@ const app = new Vue({
         if (msg.do === 'send_state') this.sendState()
         if (msg.do === 'set_state') this.setState(msg.state)
         if (msg.do === 'reaction') this.setReaction(msg.emoji)
+        if (msg.do === 'set_viewer') this.setViewer(msg.viewer)
       }
     })
 
@@ -112,6 +113,17 @@ const app = new Vue({
     generateId: function () {
       this.state.id = `${ Math.random().toString(24).replace(/[^a-z]+/g, '').substr(0, 5).toUpperCase() }-${ Math.floor(Math.random() * (999 - 111) + 111) }`
     },
+    setViewer: function (viewer) {
+      this.state.viewer = viewer
+    },
+    requestViewer: function () {
+      const msg = { 
+        id: this.state.id,
+        do: 'send_viewer'
+      }
+    
+      socket.send(JSON.stringify(msg))
+    },
     setReaction: function (emoji) {
       if (emoji === 'poop') {
         const clone = this.$refs.poop.cloneNode(true)
@@ -178,7 +190,7 @@ const app = new Vue({
         state: this.state
       }
       
-      this.state.viewer++
+      this.requestViewer()
       socket.send(JSON.stringify(msg))
     },
     requestState: function () {
